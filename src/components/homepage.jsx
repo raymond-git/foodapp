@@ -5,29 +5,24 @@
 // In the Simple Browser panel that appears, type: http://localhost:5173/
 
 import RecipeCardTiles from "./recipeCardTitles.jsx";
+import Navbar from "./navbar.jsx";
 
 
 const Homepage = () => {
   return (
-    <div className="border-4 mx-4">
-
-      <div className="text-center">
-        <input
-          className="border-1"
-          type="text"
-          placeholder="Search Item">
-        </input>
-
-        <button className="border-1 ml-4">Search Recipe</button>
+    <div>
+      <Navbar />
+      <div className="mx-14 ">
+        <div>
+          <div className="p-10 flex justify-center">
+            <RecipeCardTiles
+              image="/koreanFriedChicken.png"
+              title="Korean Fried Chicken"
+              description="Spicy Chicken" />
+          </div>
+        </div>
       </div>
-
-      <RecipeCardTiles
-        image="/koreanFriedChicken.png"
-        title="Korean Fried Chicken"
-        description="Spicy Chicken" />
-
     </div>
-
   );
 };
 
