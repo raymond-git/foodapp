@@ -7,8 +7,8 @@
 import RecipeCardTiles from "./recipeCardTitles.jsx";
 import Navbar from "./navbar.jsx";
 
-
 const Homepage = () => {
+
   return (
     <div>
       <Navbar />
