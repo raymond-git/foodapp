@@ -1,25 +1,31 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AddRecipe = () => {
 
+    const navigate = useNavigate();
     const [recipeDetails, setRecipeDetails] = useState({ recipeName: "", recipeDescription: "", recipeImage: "", recipeIngredients: "" });
 
     function handleSubmit(e) {
         e.preventDefault();
         const recipe = recipeDetails;
         console.log(recipe);
-        fetch('http://localhost:5173/addrecipe', {
+        fetch('http://localhost:5000/addrecipe', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(recipe)
-        }).then(() => {
-            console.log("Added Recipe");
+            body: JSON.stringify(recipe),
+        }).then((res) => {
+            if (res.ok) {
+                navigate('/success'), { state: recipe };
+                console.log("Sucessfully posted")
+            }
+
         })
     }
     return (
         <div>
             <h1>Add Recipe</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Recipe Name</label>
                 <input className='border-2 mt-2' type="text" value={recipeDetails.recipeName} onChange={(e) => setRecipeDetails({ ...recipeDetails, recipeName: e.target.value })}></input>
                 <label>Recipe Description</label>
