@@ -16,10 +16,9 @@ const AddRecipe = () => {
             body: JSON.stringify(recipe),
         }).then((res) => {
             if (res.ok) {
-                navigate('/success'), { state: recipe };
+                navigate('/success', { state: { recipe } });
                 console.log("Sucessfully posted")
             }
-
         })
     }
     return (
